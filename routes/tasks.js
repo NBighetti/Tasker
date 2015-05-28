@@ -41,6 +41,17 @@ router.put('/:id', function(req, res, next){
   });
 });
 
+// PATCH /api/tasks/:id
+router.patch('/:id', function(req, res, next){
+  console.log(req.body);
+  Task.findByIdAndUpdate(req.params.id, req.body,
+  function(err,task){
+    res.json({
+      "message": "Your task has been updated!"
+    });
+  });
+});
+
 // DELETE /api/tasks/:id
 router.delete('/:id', function(req, res, next) {
   Task.findbyIdAndRemove(req.params.id, req.body,
